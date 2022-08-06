@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import Skeleton from "@mui/material/Skeleton";
+import Typewriter from "typewriter-effect";
 import React, { useContext } from "react";
+import Carousell from "../components/Carousel";
 import { ProjectsContext } from "../context/ProjectsContext";
 import { ThemeContext } from "../context/ThemeContext";
 const Home = () => {
@@ -9,26 +10,47 @@ const Home = () => {
   console.log(theme);
   return (
     <Box
-      bgcolor={theme.palette.primary.main}
-      sx={{ mt: 8, height: "100vh", display: "flex" }}
+      sx={{
+        bgcolor: "bisque",
+        height: "100vh",
+        p: "3rem",
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
     >
-      {projects.length !== 0 ? (
-        <img
-          src={projects[0].owner.avatar_url}
-          alt="avatar"
-          style={{ width: "250px", height: "400px", margin: "0.5rem" }}
+      <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
+        <Typewriter
+          // options={{
+          //   strings: ["Hello"],
+          //   autoStart: true,
+          //   loop: false,
+          // }}
+          onInit={(typewriter) => {
+            typewriter
+              .typeString("Hello")
+              .pauseFor(1000)
+              .deleteAll()
+              .typeString("My name is Miraç")
+              .start();
+          }}
         />
-      ) : (
-        <Skeleton
-          sx={{ bgcolor: "grey.900" }}
-          variant="rectangular"
-          width={250}
-          height={400}
-        />
-      )}
-      <Typography variant="h1" display="block">
-        Hi, I'm Miraç
       </Typography>
+      <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
+        <Typewriter
+          // options={{
+          //   delay: "250",
+          //   autoStart: true,
+          //   loop: false,
+          // }}
+          onInit={(typewriter) => {
+            typewriter.typeString("I am a Frontend Developer ").start();
+          }}
+        />
+      </Typography>
+
+      <Carousell />
     </Box>
   );
 };

@@ -35,10 +35,10 @@ export default function BasicSelect({ categories, setCategories }) {
           <MenuItem value="All">All</MenuItem>
           <MenuItem value="react">React</MenuItem>
           <MenuItem value="javascript">Javascript</MenuItem>
-          <MenuItem value="Html5">HTML</MenuItem>
+          <MenuItem value="html5">HTML</MenuItem>
           <MenuItem value="firebase">Firebase</MenuItem>
           <MenuItem value="python">Python</MenuItem>
-          <MenuItem value="material">Material UI</MenuItem>
+          <MenuItem value="tailwind">Tailwind</MenuItem>
         </Select>
       </FormControl>
     </Box>
