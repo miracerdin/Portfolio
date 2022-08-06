@@ -2,12 +2,24 @@ import { Box, Typography } from "@mui/material";
 import Typewriter from "typewriter-effect";
 import React, { useContext } from "react";
 import Carousell from "../components/Carousel";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ProjectsContext } from "../context/ProjectsContext";
-import { ThemeContext } from "../context/ThemeContext";
+// import { ThemeContext } from "../context/ThemeContext";
 const Home = () => {
   const { projects } = useContext(ProjectsContext);
-  const { theme } = useContext(ThemeContext);
-  console.log(theme);
+  // const { theme } = useContext(ThemeContext);
+  const theme = createTheme();
+
+  theme.typography.h2 = {
+    fontSize: "1.2rem",
+    "@media (min-width:600px)": {
+      fontSize: "1.5rem",
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2.4rem",
+    },
+  };
+
   return (
     <Box
       sx={{
@@ -20,35 +32,38 @@ const Home = () => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
-        <Typewriter
-          // options={{
-          //   strings: ["Hello"],
-          //   autoStart: true,
-          //   loop: false,
-          // }}
-          onInit={(typewriter) => {
-            typewriter
-              .typeString("Hello")
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString("My name is Miraç")
-              .start();
-          }}
-        />
-      </Typography>
-      <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
-        <Typewriter
-          // options={{
-          //   delay: "250",
-          //   autoStart: true,
-          //   loop: false,
-          // }}
-          onInit={(typewriter) => {
-            typewriter.typeString("I am a Frontend Developer ").start();
-          }}
-        />
-      </Typography>
+      <ThemeProvider theme={theme}>
+        <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
+          <Typewriter
+            // options={{
+            //   strings: ["Hello"],
+            //   autoStart: true,
+            //   loop: false,
+            // }}
+            onInit={(typewriter) => {
+              typewriter
+                .typeString("Hello")
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString("My name is Miraç")
+                .start();
+            }}
+          />
+        </Typography>
+
+        <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
+          <Typewriter
+            // options={{
+            //   delay: "250",
+            //   autoStart: true,
+            //   loop: false,
+            // }}
+            onInit={(typewriter) => {
+              typewriter.typeString("I am a Frontend Developer ").start();
+            }}
+          />
+        </Typography>
+      </ThemeProvider>
 
       <Carousell />
     </Box>
