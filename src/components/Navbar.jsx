@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { ProjectsContext } from "../context/ProjectsContext";
-import { Avatar } from "@mui/material";
+import { Avatar, Switch } from "@mui/material";
 
 const drawerWidth = 240;
 const navItems = [
@@ -30,14 +30,18 @@ function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { projects } = useContext(ProjectsContext);
-  const { theme } = useContext(ThemeContext);
-  console.log(projects);
+  const { theme, themeDark, toggleDark, settoggleDark } =
+    useContext(ThemeContext);
+
   const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const handleModeChange = () => {
+    settoggleDark(!toggleDark);
+  };
+  console.log(toggleDark);
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Avatar
@@ -68,6 +72,12 @@ function Navbar(props) {
         </div> */}
         {"<Mirac />"}
       </Typography>
+      <Switch
+        checked={toggleDark}
+        onChange={handleModeChange}
+        name="toggleDark"
+        color="default"
+      />
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -92,7 +102,17 @@ function Navbar(props) {
   };
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" style={{ background: "#2E3B55" }}>
+      <AppBar
+        component="nav"
+        style={{
+          background: toggleDark
+            ? theme.palette.primary.light
+            : themeDark.palette.primary.main,
+          color: toggleDark
+            ? theme.palette.primary.dark
+            : themeDark.palette.primary.light,
+        }}
+      >
         <Toolbar bg="#b39ddb">
           <IconButton
             color="inherit"
@@ -115,12 +135,22 @@ function Navbar(props) {
           >
             {"<Mirac />"}
           </Typography>
+          <Switch
+            checked={toggleDark}
+            onChange={handleModeChange}
+            name="toggleDark"
+            color="default"
+          />
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button
                 onClick={() => handleClick(item.Id)}
                 key={item.Id}
-                sx={{ color: "#fff" }}
+                sx={{
+                  color: toggleDark
+                    ? theme.palette.primary.dark
+                    : themeDark.palette.primary.light,
+                }}
               >
                 {item.label}
               </Button>
@@ -148,9 +178,7 @@ function Navbar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 0.2 }}>
-        <Toolbar />
-      </Box>
+      <Box component="main" sx={{ p: 2 }}></Box>
     </Box>
   );
 }

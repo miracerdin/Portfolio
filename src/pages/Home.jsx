@@ -4,18 +4,18 @@ import React, { useContext } from "react";
 import Carousell from "../components/Carousel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ProjectsContext } from "../context/ProjectsContext";
-// import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 const Home = () => {
   const { projects } = useContext(ProjectsContext);
-  // const { theme } = useContext(ThemeContext);
-  const theme = createTheme();
+  const { theme, themeDark, toggleDark } = useContext(ThemeContext);
+  const insideTheme = createTheme();
 
-  theme.typography.h2 = {
+  insideTheme.typography.h2 = {
     fontSize: "1.2rem",
     "@media (min-width:600px)": {
       fontSize: "1.5rem",
     },
-    [theme.breakpoints.up("md")]: {
+    [insideTheme.breakpoints.up("md")]: {
       fontSize: "2.4rem",
     },
   };
@@ -23,7 +23,12 @@ const Home = () => {
   return (
     <Box
       sx={{
-        bgcolor: "bisque",
+        background: toggleDark
+          ? theme.palette.primary.light
+          : themeDark.palette.primary.main,
+        color: toggleDark
+          ? theme.palette.primary.dark
+          : themeDark.palette.primary.light,
         height: "100vh",
         p: "3rem",
         textAlign: "center",
@@ -32,8 +37,16 @@ const Home = () => {
         alignItems: "center",
       }}
     >
-      <ThemeProvider theme={theme}>
-        <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
+      <ThemeProvider theme={insideTheme}>
+        <Typography
+          variant="h2"
+          gutterBottom
+          sx={{
+            color: toggleDark
+              ? theme.palette.primary.dark
+              : themeDark.palette.primary.light,
+          }}
+        >
           <Typewriter
             // options={{
             //   strings: ["Hello"],
@@ -51,7 +64,15 @@ const Home = () => {
           />
         </Typography>
 
-        <Typography variant="h2" gutterBottom sx={{ color: "black" }}>
+        <Typography
+          variant="h2"
+          gutterBottom
+          sx={{
+            color: toggleDark
+              ? theme.palette.primary.dark
+              : themeDark.palette.primary.light,
+          }}
+        >
           <Typewriter
             // options={{
             //   delay: "250",

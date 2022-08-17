@@ -3,9 +3,22 @@ import React from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 const About = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeDark, toggleDark } = useContext(ThemeContext);
   return (
-    <Box container sx={{ mt: "4rem", height: "100vh", marginX: "1rem" }}>
+    <Box
+      container
+      sx={{
+        mt: "2rem",
+        height: "100vh",
+        padding: "1rem ",
+        background: toggleDark
+          ? theme.palette.primary.light
+          : themeDark.palette.primary.main,
+        color: toggleDark
+          ? theme.palette.primary.dark
+          : themeDark.palette.primary.light,
+      }}
+    >
       <Typography variant="h2">My name is Miraç.</Typography>
       <Typography variant="body1">
         +3 years experienced in IT and an front-end developer, interested in

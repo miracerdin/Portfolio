@@ -2,13 +2,25 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Search({ setSearched, projects, searched }) {
+  const { theme, themeDark, toggleDark } = useContext(ThemeContext);
   return (
     <Box
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: "auto", width: "25ch" },
+        "& .MuiTextField-root": {
+          m: "auto",
+          width: "25ch",
+          background: toggleDark
+            ? theme.palette.primary.light
+            : themeDark.palette.primary.main,
+          color: toggleDark
+            ? theme.palette.primary.dark
+            : themeDark.palette.primary.light,
+        },
       }}
       noValidate
       autoComplete="off"
@@ -16,7 +28,20 @@ export default function Search({ setSearched, projects, searched }) {
       <div style={{ textAlign: "center" }}>
         <TextField
           variant="outlined"
-          sx={{ marginLeft: "1rem" }}
+          sx={{
+            marginLeft: "1rem",
+            border: `1px solid ${
+              toggleDark
+                ? theme.palette.primary.dark
+                : themeDark.palette.primary.light
+            }`,
+            background: toggleDark
+              ? theme.palette.primary.light
+              : themeDark.palette.primary.main,
+            color: toggleDark
+              ? theme.palette.primary.dark
+              : themeDark.palette.primary.light,
+          }}
           placeholder="Search for a project"
           size="small"
           value={searched}

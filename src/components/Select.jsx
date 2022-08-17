@@ -6,9 +6,11 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useContext } from "react";
 import { ProjectsContext } from "../context/ProjectsContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function BasicSelect({ categories, setCategories }) {
   const { projects } = useContext(ProjectsContext);
+  const { theme, themeDark, toggleDark } = useContext(ThemeContext);
 
   console.log(categories);
 
@@ -18,13 +20,36 @@ export default function BasicSelect({ categories, setCategories }) {
 
   return (
     <Box
-      sx={{ minWidth: 120, maxWidth: "250px", alignItems: "center" }}
+      sx={{
+        minWidth: 120,
+        maxWidth: "250px",
+        alignItems: "center",
+        color: "white",
+      }}
       //   sx={{
       //     "& .MuiTextField-root": { m: "auto", width: "25ch" },
       //   }}
     >
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Categories</InputLabel>
+      <FormControl
+        fullWidth
+        sx={{
+          border: `1px solid ${
+            toggleDark
+              ? theme.palette.primary.dark
+              : themeDark.palette.primary.light
+          }`,
+        }}
+      >
+        <InputLabel
+          id="demo-simple-select-label"
+          sx={{
+            color: toggleDark
+              ? theme.palette.primary.dark
+              : themeDark.palette.primary.light,
+          }}
+        >
+          Categories
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"

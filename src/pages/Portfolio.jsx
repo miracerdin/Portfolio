@@ -23,7 +23,7 @@ const Portfolio = () => {
   const [categories, setCategories] = React.useState("");
   const [filteredData, setFilteredData] = React.useState([]);
   const { projects, setProjects } = useContext(ProjectsContext);
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeDark, toggleDark } = useContext(ThemeContext);
 
   // console.log(
   //   projects.filter((product) => product.topics.includes(categories))
@@ -49,7 +49,18 @@ const Portfolio = () => {
   console.log(searched);
 
   return (
-    <Box>
+    <Box
+      sx={{
+        marginTop: "2rem",
+        background: toggleDark
+          ? theme.palette.primary.light
+          : themeDark.palette.primary.main,
+        color: toggleDark
+          ? theme.palette.primary.dark
+          : themeDark.palette.primary.light,
+        minHeight: "100vh",
+      }}
+    >
       <Grid
         spacing={2}
         sx={{ gap: "1rem", my: "1rem" }}
@@ -89,7 +100,12 @@ const Portfolio = () => {
           flexWrap: "wrap",
           justifyContent: "center",
           height: "100%",
-          bgcolor: theme.palette.secondary.main,
+          bgcolor: toggleDark
+            ? theme.palette.primary.light
+            : themeDark.palette.primary.main,
+          color: toggleDark
+            ? theme.palette.primary.dark
+            : themeDark.palette.primary.light,
         }}
       >
         {searched === "" ? (
@@ -128,12 +144,16 @@ const Portfolio = () => {
                   <CardActions>
                     <Link
                       href={project.homepage || "#"}
-                      bgcolor={theme.palette.primary.light}
-                      color={theme.palette.secondary.main}
                       sx={{
                         borderRadius: "5px",
                         padding: "5px 10px",
                         textDecoration: "none",
+                        background: toggleDark
+                          ? theme.palette.primary.light
+                          : themeDark.palette.primary.main,
+                        color: toggleDark
+                          ? theme.palette.primary.dark
+                          : themeDark.palette.primary.light,
                       }}
                     >
                       Home page
@@ -146,6 +166,12 @@ const Portfolio = () => {
                         borderRadius: "5px",
                         padding: "5px 10px",
                         textDecoration: "none",
+                        background: toggleDark
+                          ? theme.palette.primary.light
+                          : themeDark.palette.primary.main,
+                        color: toggleDark
+                          ? theme.palette.primary.dark
+                          : themeDark.palette.primary.light,
                       }}
                     >
                       Code
@@ -200,6 +226,12 @@ const Portfolio = () => {
                           borderRadius: "5px",
                           padding: "5px 10px",
                           textDecoration: "none",
+                          background: toggleDark
+                            ? theme.palette.primary.light
+                            : themeDark.palette.primary.main,
+                          color: toggleDark
+                            ? theme.palette.primary.dark
+                            : themeDark.palette.primary.light,
                         }}
                       >
                         Home page
@@ -213,6 +245,12 @@ const Portfolio = () => {
                           borderRadius: "5px",
                           padding: "5px 10px",
                           textDecoration: "none",
+                          background: toggleDark
+                            ? theme.palette.primary.light
+                            : themeDark.palette.primary.main,
+                          color: toggleDark
+                            ? theme.palette.primary.dark
+                            : themeDark.palette.primary.light,
                         }}
                       >
                         Code
