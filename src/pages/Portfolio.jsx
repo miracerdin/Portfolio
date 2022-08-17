@@ -164,50 +164,61 @@ const Portfolio = () => {
               return (
                 <Card
                   key={index}
-                  sx={{ width: 345, m: 1, position: "relative" }}
+                  sx={{
+                    width: 345,
+                    m: 1,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "space-between",
+                    flexDirection: "column",
+                  }}
                   bgcolor={theme.palette.secondary.main}
                 >
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={defaultImage}
-                    alt="image"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {item.description}
-                    </Typography>
-                  </CardContent>
-                  <CardActions sx={{ position: "abolute", bottom: 0 }}>
-                    <Link
-                      href={item.homepage || "#"}
-                      bgcolor={theme.palette.primary.light}
-                      color={theme.palette.secondary.main}
-                      sx={{
-                        borderRadius: "5px",
-                        padding: "5px 10px",
-                        textDecoration: "none",
-                      }}
-                    >
-                      Home page
-                    </Link>
+                  <Box>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={defaultImage}
+                      alt="image"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {item.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                  </Box>
+                  <Box>
+                    <CardActions sx={{ position: "abolute", bottom: 0 }}>
+                      <Link
+                        href={item.homepage || "#"}
+                        bgcolor={theme.palette.primary.light}
+                        color={theme.palette.secondary.main}
+                        sx={{
+                          borderRadius: "5px",
+                          padding: "5px 10px",
+                          textDecoration: "none",
+                        }}
+                      >
+                        Home page
+                      </Link>
 
-                    <Link
-                      href={item.html_url}
-                      bgcolor={theme.palette.primary.light}
-                      color={theme.palette.secondary.main}
-                      sx={{
-                        borderRadius: "5px",
-                        padding: "5px 10px",
-                        textDecoration: "none",
-                      }}
-                    >
-                      Code
-                    </Link>
-                  </CardActions>
+                      <Link
+                        href={item.html_url}
+                        bgcolor={theme.palette.primary.light}
+                        color={theme.palette.secondary.main}
+                        sx={{
+                          borderRadius: "5px",
+                          padding: "5px 10px",
+                          textDecoration: "none",
+                        }}
+                      >
+                        Code
+                      </Link>
+                    </CardActions>
+                  </Box>
                 </Card>
               );
             })
