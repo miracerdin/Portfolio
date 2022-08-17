@@ -14,6 +14,9 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ThemeContext } from "../context/ThemeContext";
 import Select from "../components/Select";
+
+const defaultImage = "https://picsum.photos/200/300";
+
 const Portfolio = () => {
   // const [projects, setProjects] = React.useState([]);
   const [searched, setSearched] = React.useState("");
@@ -94,30 +97,61 @@ const Portfolio = () => {
             return (
               <Card
                 key={project.id}
-                sx={{ width: 345, m: 1, bgcolor: "#0097a7" }}
+                sx={{
+                  width: 345,
+                  m: 1,
+                  bgcolor: "#fff",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "space-between",
+                  flexDirection: "column",
+                }}
               >
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {project.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {project.description}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Link href={project.homepage || "#"} color="text.secondary">
-                    Home page
-                  </Link>
-                  <Link href={project.html_url} color="text.secondary">
-                    Code
-                  </Link>
-                </CardActions>
+                <Box>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    sx={{ width: "100%" }}
+                    image={defaultImage}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {project.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {project.description}
+                    </Typography>
+                  </CardContent>
+                </Box>
+                <Box>
+                  <CardActions>
+                    <Link
+                      href={project.homepage || "#"}
+                      bgcolor={theme.palette.primary.light}
+                      color={theme.palette.secondary.main}
+                      sx={{
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      Home page
+                    </Link>
+                    <Link
+                      href={project.html_url}
+                      bgcolor={theme.palette.primary.light}
+                      color={theme.palette.secondary.main}
+                      sx={{
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      Code
+                    </Link>
+                  </CardActions>
+                </Box>
               </Card>
             );
           })
@@ -130,14 +164,14 @@ const Portfolio = () => {
               return (
                 <Card
                   key={index}
-                  sx={{ width: 345, m: 1 }}
+                  sx={{ width: 345, m: 1, position: "relative" }}
                   bgcolor={theme.palette.secondary.main}
                 >
                   <CardMedia
                     component="img"
                     height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
+                    image={defaultImage}
+                    alt="image"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -147,17 +181,32 @@ const Portfolio = () => {
                       {item.description}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button variant="contained">
-                      <Link href={item.homepage || "#"} color="text.secondary">
-                        Home page
-                      </Link>
-                    </Button>
-                    <Button variant="contained">
-                      <Link href={item.html_url} color="text.secondary">
-                        Code
-                      </Link>
-                    </Button>
+                  <CardActions sx={{ position: "abolute", bottom: 0 }}>
+                    <Link
+                      href={item.homepage || "#"}
+                      bgcolor={theme.palette.primary.light}
+                      color={theme.palette.secondary.main}
+                      sx={{
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      Home page
+                    </Link>
+
+                    <Link
+                      href={item.html_url}
+                      bgcolor={theme.palette.primary.light}
+                      color={theme.palette.secondary.main}
+                      sx={{
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        textDecoration: "none",
+                      }}
+                    >
+                      Code
+                    </Link>
                   </CardActions>
                 </Card>
               );
