@@ -28,12 +28,13 @@ code {
 .images {
   float: left;
   padding: 10px 10px;
+  min-width: 300px;
   width: 50%;
   height: 50%;
   object-fit: cover;
 }
-/* @media screen and(max-width: 375px){
-  .images{
-
+@media screen and(max-width: 576px) {
+  .images {
+    width: 400px;
   }
-} */
+}
