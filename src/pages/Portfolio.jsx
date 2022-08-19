@@ -51,7 +51,8 @@ const Portfolio = () => {
   return (
     <Box
       sx={{
-        marginTop: "2rem",
+        marginTop: "1rem",
+        padding: "2rem 1rem",
         background: toggleDark
           ? theme.palette.primary.light
           : themeDark.palette.primary.main,

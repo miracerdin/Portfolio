@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Button, CardMedia } from "@mui/material";
 import { ProjectsContext } from "../context/ProjectsContext";
-const defaultImage = "https://picsum.photos/200/300";
+const defaultImage = "https://picsum.photos/500/300";
 export default function Carousell(props) {
   const { projects } = useContext(ProjectsContext);
   console.log(projects);
@@ -27,7 +27,8 @@ export default function Carousell(props) {
   return (
     <Carousel
       sx={{
-        maxWidth: "500px",
+        width: "500px",
+        height: "500px",
         p: "1rem",
         m: "1rem",
         textAlign: "center",
@@ -47,7 +48,7 @@ const Item = ({ name, description, image }) => {
       <CardMedia
         component="img"
         height="250px"
-        sx={{ width: "100%" }}
+        sx={{ width: "100%", height: "100%", objectFit: "cover" }}
         image={defaultImage}
         alt="Paella dish"
       />

@@ -12,9 +12,28 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: "Carter One", cursive;
 }
 .App {
   background-color: #e3f2fd;
 }
+.darkTextField {
+  background: #f2d2bd;
+  color: #111;
+}
+.lightTextField {
+  background: #e3f2fd;
+  color: #f2d2bd;
+}
+.images {
+  float: left;
+  padding: 10px 10px;
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+}
+/* @media screen and(max-width: 375px){
+  .images{
+
+  }
+} */
