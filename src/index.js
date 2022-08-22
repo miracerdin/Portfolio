@@ -6,7 +6,7 @@ import "./i18n.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Suspense fallback={<div>...loading</div>}>
+  <Suspense fallback={<h1 style={{ textAlign: "center" }}>...loading</h1>}>
     <App />
   </Suspense>
 );

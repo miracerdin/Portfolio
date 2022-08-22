@@ -31,7 +31,6 @@ import { useTranslation } from "react-i18next";
 const drawerWidth = 240;
 
 const languages = [
-  { value: "", text: "Options" },
   { value: "en", text: "English" },
   { value: "tr", text: "Turkish" },
 ];
@@ -74,7 +73,7 @@ function Navbar(props) {
       sx={{
         textAlign: "center",
         boxShadow:
-          " rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+          " rgba(184, 179, 179, 0.19) 0px 10px 20px, rgba(190, 190, 190, 0.23) 0px 6px 6px",
       }}
     >
       <Avatar
@@ -170,15 +169,22 @@ function Navbar(props) {
           </Typography>
           <Box>
             <FormControl sx={{ m: 1, minWidth: 80 }}>
-              <InputLabel id="demo-simple-select-autowidth-label">
+              {/* <InputLabel id="demo-simple-select-autowidth-label">
                 Languages
-              </InputLabel>
+              </InputLabel> */}
               <Select
+                variant="standard"
                 labelId="demo-simple-select-autowidth-label"
                 id="demo-simple-select-autowidth"
                 value={localStorage.getItem("i18nextLng")}
                 onChange={handleLanguageChange}
                 autoWidth
+                disableUnderline
+                className={toggleDark ? "darkTextField" : "lightTextField"}
+                sx={{
+                  border: "none",
+                  outline: "none",
+                }}
                 label="Language"
               >
                 {languages.map((item, index) => {

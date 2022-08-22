@@ -261,9 +261,15 @@ const Portfolio = () => {
               );
             })
         ) : (
-          <div style={{ color: "black" }}>
+          <Box
+            sx={{
+              color: toggleDark
+                ? theme.palette.primary.dark
+                : themeDark.palette.primary.light,
+            }}
+          >
             There is no project with that name
-          </div>
+          </Box>
         )}
       </div>
     </Box>

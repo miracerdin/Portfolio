@@ -32,20 +32,14 @@ export default function BasicSelect({ categories, setCategories }) {
     >
       <FormControl
         fullWidth
-        sx={{
-          border: `1px solid ${
-            toggleDark
-              ? theme.palette.primary.dark
-              : themeDark.palette.primary.light
-          }`,
-        }}
+        className={toggleDark ? "darkTextField" : "lightTextField"}
       >
         <InputLabel
           id="demo-simple-select-label"
           sx={{
             color: toggleDark
               ? theme.palette.primary.dark
-              : themeDark.palette.primary.light,
+              : themeDark.palette.primary.dark,
           }}
         >
           Categories

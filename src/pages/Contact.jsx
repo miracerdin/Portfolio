@@ -23,6 +23,7 @@ const Contact = () => {
         alignItems: "center",
         width: "100vw",
         minHeight: "100vh",
+        marginTop: "1rem",
         justifyContent: "center",
         flexDirection: "column",
 

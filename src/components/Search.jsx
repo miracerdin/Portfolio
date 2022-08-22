@@ -10,16 +10,11 @@ export default function Search({ setSearched, projects, searched }) {
   return (
     <Box
       component="form"
+      className={toggleDark ? "darkTextField" : "lightTextField"}
       sx={{
         "& .MuiTextField-root": {
           m: "auto",
           width: "25ch",
-          background: toggleDark
-            ? theme.palette.primary.light
-            : themeDark.palette.primary.main,
-          color: toggleDark
-            ? theme.palette.primary.dark
-            : themeDark.palette.primary.light,
         },
       }}
       noValidate
@@ -30,17 +25,17 @@ export default function Search({ setSearched, projects, searched }) {
           variant="outlined"
           sx={{
             marginLeft: "1rem",
-            border: `1px solid ${
-              toggleDark
-                ? theme.palette.primary.dark
-                : themeDark.palette.primary.light
-            }`,
-            background: toggleDark
-              ? theme.palette.primary.light
-              : themeDark.palette.primary.main,
-            color: toggleDark
-              ? theme.palette.primary.dark
-              : themeDark.palette.primary.light,
+            // border: `1px solid ${
+            //   toggleDark
+            //     ? theme.palette.primary.dark
+            //     : themeDark.palette.primary.light
+            // }`,
+            // background: toggleDark
+            //   ? theme.palette.primary.light
+            //   : themeDark.palette.primary.main,
+            // color: toggleDark
+            //   ? theme.palette.primary.dark
+            //   : themeDark.palette.primary.light,
           }}
           placeholder="Search for a project"
           size="small"

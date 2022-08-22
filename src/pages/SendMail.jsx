@@ -11,7 +11,7 @@ const SendMail = () => {
   const { theme, themeDark, toggleDark } = useContext(ThemeContext);
   const { t } = useTranslation(["contact"]);
   return (
-    <Container maxWidth="sm" sx={{ mt: "1rem", textAlign: "center" }}>
+    <Container maxWidth="sm" sx={{ marginY: "1rem", textAlign: "center" }}>
       {/* <Avatar
         sx={{
           backgroundColor: "primary.main",
