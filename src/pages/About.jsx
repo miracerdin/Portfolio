@@ -12,7 +12,7 @@ const About = () => {
       sx={{
         display: "flex",
         mt: "1rem",
-        height: "100vh",
+        minHeight: "100vh",
         padding: "2rem 1rem",
         whiteSpace: "break-word",
         background: toggleDark

@@ -84,7 +84,7 @@ function Navbar(props) {
             ? projects[0].owner.avatar_url
             : "https://picsum.photos/200/300"
         }
-        sx={{ position: "relative", top: "0.7rem", left: "45%" }}
+        sx={{ top: "0.7rem", left: "45%" }}
       />
 
       <Typography

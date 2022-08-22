@@ -17,28 +17,25 @@ const Contact = () => {
   return (
     <Box
       container
-      bgcolor={theme.palette.secondary.light}
+      // bgcolor={theme.palette.secondary.light}
       sx={{
         display: "flex",
         alignItems: "center",
-        height: "100vh",
+        width: "100vw",
+        minHeight: "100vh",
         justifyContent: "center",
         flexDirection: "column",
+
         background: toggleDark
           ? theme.palette.primary.light
           : themeDark.palette.primary.main,
         color: toggleDark
           ? theme.palette.primary.dark
           : themeDark.palette.primary.light,
-        position: "relative",
       }}
     >
       <Box>
-        <Grid
-          container
-          spacing="4"
-          // sx={{ gap: "1rem" }}
-        >
+        <Grid container spacing="4" sx={{ mt: "2rem" }}>
           <Grid item xs={12} sm={4} textAlign="center">
             <Link href="https://github.com/miracerdin?tab=repositories">
               <GitHubIcon
