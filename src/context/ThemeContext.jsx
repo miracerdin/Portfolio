@@ -5,6 +5,8 @@ export const ThemeContext = createContext();
 
 const ThemeContextProvider = ({ children }) => {
   const [toggleDark, settoggleDark] = useState(true);
+  const [language, setLanguage] = useState(false);
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -29,7 +31,14 @@ const ThemeContextProvider = ({ children }) => {
       },
     },
   });
-  const values = { theme, themeDark, toggleDark, settoggleDark };
+  const values = {
+    theme,
+    themeDark,
+    toggleDark,
+    language,
+    settoggleDark,
+    setLanguage,
+  };
   return (
     <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
   );

@@ -1,15 +1,15 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import { FaLock } from "react-icons/fa";
 import { Formik } from "formik";
 import { sendMailSchema } from "../components/sendMailSchema";
 import SendMailForm from "../components/SendMailForm";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 const SendMail = () => {
   const { theme, themeDark, toggleDark } = useContext(ThemeContext);
+  const { t } = useTranslation(["contact"]);
   return (
     <Container maxWidth="sm" sx={{ mt: "1rem", textAlign: "center" }}>
       {/* <Avatar
@@ -33,7 +33,7 @@ const SendMail = () => {
             : themeDark.palette.primary.light
         }
       >
-        Contact with me
+        {t("ContactWithMe")}
       </Typography>
 
       <Formik

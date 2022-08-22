@@ -8,17 +8,12 @@ import Link from "@mui/material/Link";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { Box } from "@mui/system";
-import {
-  Button,
-  Checkbox,
-  Container,
-  FormControlLabel,
-  TextField,
-} from "@mui/material";
+
 import SendMail from "./SendMail";
 
 const Contact = () => {
   const { theme, themeDark, toggleDark } = useContext(ThemeContext);
+
   return (
     <Box
       container

@@ -17,22 +17,42 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { ProjectsContext } from "../context/ProjectsContext";
-import { Avatar, Switch } from "@mui/material";
+import {
+  Avatar,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Switch,
+} from "@mui/material";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
-const navItems = [
-  { label: "About", Id: "About" },
-  { label: "Portfolio", Id: "Portfolio" },
-  { label: "Contact", Id: "Contact" },
+
+const languages = [
+  { value: "", text: "Options" },
+  { value: "en", text: "English" },
+  { value: "tr", text: "Turkish" },
 ];
 
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { projects } = useContext(ProjectsContext);
-  const { theme, themeDark, toggleDark, settoggleDark } =
+  const { theme, themeDark, toggleDark, settoggleDark, language, setLanguage } =
     useContext(ThemeContext);
-
+  const { t, i18n } = useTranslation(["navbar"]);
+  React.useEffect((e) => {
+    if (localStorage.getItem("i18nextLng")?.length > 2) {
+      i18next.changeLanguage("en");
+    }
+  }, []);
+  const navItems = [
+    { label: `${t("About")}`, Id: "About" },
+    { label: `${t("Portfolio")}`, Id: "Portfolio" },
+    { label: `${t("Contact")}`, Id: "Contact" },
+  ];
   const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
@@ -41,6 +61,12 @@ function Navbar(props) {
   const handleModeChange = () => {
     settoggleDark(!toggleDark);
   };
+
+  const handleLanguageChange = (e) => {
+    i18n.changeLanguage(e.target.value);
+    setLanguage(!language);
+  };
+
   console.log(toggleDark);
   const drawer = (
     <Box
@@ -142,12 +168,42 @@ function Navbar(props) {
           >
             {"<Mirac />"}
           </Typography>
+          <Box>
+            <FormControl sx={{ m: 1, minWidth: 80 }}>
+              <InputLabel id="demo-simple-select-autowidth-label">
+                Languages
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                value={localStorage.getItem("i18nextLng")}
+                onChange={handleLanguageChange}
+                autoWidth
+                label="Language"
+              >
+                {languages.map((item, index) => {
+                  return (
+                    <MenuItem key={index} value={item.value}>
+                      {item.text}
+                    </MenuItem>
+                  );
+                })}
+                {/* <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Twenty</MenuItem>
+                <MenuItem value={21}>Twenty one</MenuItem>
+                <MenuItem value={22}>Twenty one and a half</MenuItem> */}
+              </Select>
+            </FormControl>
+          </Box>
           <Switch
             checked={toggleDark}
             onChange={handleModeChange}
             name="toggleDark"
             color="default"
           />
+
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button

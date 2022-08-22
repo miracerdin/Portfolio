@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Carousel from "react-material-ui-carousel";
-import { Paper, Button, CardMedia } from "@mui/material";
+import { Paper, CardMedia } from "@mui/material";
 import { ProjectsContext } from "../context/ProjectsContext";
 const defaultImage = "https://picsum.photos/500/300";
 export default function Carousell(props) {

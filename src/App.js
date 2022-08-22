@@ -1,6 +1,5 @@
 import ProjectsContextProvider from "./context/ProjectsContext";
 import ThemeContextProvider from "./context/ThemeContext";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Router from "./router/Router";
 // import { useContext } from "react";
 function App() {

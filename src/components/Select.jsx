@@ -5,11 +5,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useContext } from "react";
-import { ProjectsContext } from "../context/ProjectsContext";
+// import { ProjectsContext } from "../context/ProjectsContext";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function BasicSelect({ categories, setCategories }) {
-  const { projects } = useContext(ProjectsContext);
+  // const { projects } = useContext(ProjectsContext);
   const { theme, themeDark, toggleDark } = useContext(ThemeContext);
 
   console.log(categories);

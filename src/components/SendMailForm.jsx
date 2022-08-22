@@ -6,6 +6,7 @@ import { Container } from "@mui/system";
 import { Form } from "formik";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 const SendMailForm = ({
   values,
@@ -14,7 +15,9 @@ const SendMailForm = ({
   touched,
   handleBlur,
 }) => {
-  const { theme, themeDark, toggleDark } = useContext(ThemeContext);
+  const { toggleDark } = useContext(ThemeContext);
+  const { t } = useTranslation(["contact"]);
+
   return (
     <div>
       <Form action="https://formsubmit.co/miracerdin@gmail.com" method="POST">
@@ -25,13 +28,14 @@ const SendMailForm = ({
             sx={{ mt: 3 }}
             action="https://formsubmit.co/miracerdin@gmail.com"
             method="POST"
+            // eslint-disable-next-line
             sx={{ display: "flex", flexDirection: "column", gap: 4 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="fist name"
+                  label={t("firstName")}
                   name="firstName"
                   id="firstName"
                   type="text"
@@ -47,7 +51,7 @@ const SendMailForm = ({
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="last Name"
+                  label={t("lastName")}
                   name="lastName"
                   id="lastName"
                   type="text"
@@ -63,7 +67,7 @@ const SendMailForm = ({
               <Grid item xs={12}>
                 <TextField
                   fullWidth
-                  label="Email"
+                  label={t("Email")}
                   name="email"
                   id="email"
                   type="email"
@@ -79,7 +83,7 @@ const SendMailForm = ({
               <Grid item xs={12}>
                 <TextField
                   fullWidth
-                  label="Your text"
+                  label={t("YourText")}
                   placeholder="Write your message"
                   name="textarea"
                   id="textarea"
@@ -111,7 +115,7 @@ const SendMailForm = ({
               variant="contained"
               size="large"
             >
-              Send Mail
+              {t("SendMail")}
             </Button>
           </Box>
         </Container>

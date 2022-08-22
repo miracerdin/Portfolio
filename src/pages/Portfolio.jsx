@@ -10,7 +10,6 @@ import Link from "@mui/material/Link";
 import Search from "../components/Search";
 import { ProjectsContext } from "../context/ProjectsContext";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { ThemeContext } from "../context/ThemeContext";
 import Select from "../components/Select";
@@ -22,7 +21,7 @@ const Portfolio = () => {
   const [searched, setSearched] = React.useState("");
   const [categories, setCategories] = React.useState("");
   const [filteredData, setFilteredData] = React.useState([]);
-  const { projects, setProjects } = useContext(ProjectsContext);
+  const { projects } = useContext(ProjectsContext);
   const { theme, themeDark, toggleDark } = useContext(ThemeContext);
 
   // console.log(

@@ -1,14 +1,24 @@
 import { Box, Typography } from "@mui/material";
 import Typewriter from "typewriter-effect";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Carousell from "../components/Carousel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ProjectsContext } from "../context/ProjectsContext";
 import { ThemeContext } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 const Home = () => {
+  const { t } = useTranslation(["home"]);
   const { projects } = useContext(ProjectsContext);
-  const { theme, themeDark, toggleDark } = useContext(ThemeContext);
+  const { theme, themeDark, toggleDark, language, setLanguage } =
+    useContext(ThemeContext);
   const insideTheme = createTheme();
+  console.log(language);
+  useEffect(() => {
+    if (language === true) {
+      window.location.reload(false);
+    }
+    console.log(language);
+  }, [language]);
 
   insideTheme.typography.h2 = {
     fontSize: "1.2rem",
@@ -55,10 +65,10 @@ const Home = () => {
             // }}
             onInit={(typewriter) => {
               typewriter
-                .typeString("Hello")
+                .typeString(`${t("Hello")}`)
                 .pauseFor(1000)
                 .deleteAll()
-                .typeString("My name is Miraç")
+                .typeString(`${t("MyNameIsMirac")}`)
                 .start();
             }}
           />
@@ -80,7 +90,7 @@ const Home = () => {
             //   loop: false,
             // }}
             onInit={(typewriter) => {
-              typewriter.typeString("I am a Frontend Developer ").start();
+              typewriter.typeString(`${t("IAmAFrontendDeveloper")}`).start();
             }}
           />
         </Typography>
