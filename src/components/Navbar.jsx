@@ -180,10 +180,14 @@ function Navbar(props) {
                 onChange={handleLanguageChange}
                 autoWidth
                 disableUnderline
-                className={toggleDark ? "darkTextField" : "lightTextField"}
+                // className={toggleDark ? "darkTextField" : "lightTextField"}
                 sx={{
-                  border: "none",
-                  outline: "none",
+                  background: toggleDark
+                    ? theme.palette.primary.light
+                    : themeDark.palette.primary.main,
+                  color: toggleDark
+                    ? theme.palette.primary.dark
+                    : themeDark.palette.primary.light,
                 }}
                 label="Language"
               >
